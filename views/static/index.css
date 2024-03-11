@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-section{
+    background-color: chartreuse;
+    display: grid;
+    grid-template-areas:
+    'navigation topic';
+    grid-template-columns: 1fr 3fr;
+
+    height: 900px;
+}
+
+.nav-col{
+    grid-area: navigation;
+    background-color: chocolate;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.topic{
+    grid-area: topic;
+    background-color: dodgerblue;
+}
