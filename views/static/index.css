@@ -19,7 +19,6 @@
 }
 
 .main-section{
-    background-color: chartreuse;
     display: grid;
     grid-template-areas:
     'navigation topic';
@@ -38,5 +37,30 @@
 }
 .topic{
     grid-area: topic;
-    background-color: dodgerblue;
+    background-color: chartreuse;
+}
+
+.nav-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    padding: 20px;
+}
+
+.headers-list, .topics-list{
+    list-style: none;
+}
+
+.headers-list li{
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.topics-list a{
+    list-style: none;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: normal;
 }

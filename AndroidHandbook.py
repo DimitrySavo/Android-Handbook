@@ -4,9 +4,16 @@ from bottle import route, template, run, static_file
 def static(filename):
     return static_file(filename, root='./views/static')
 
+topics = {"Тема 1":["firstPage", "secondPage", "подтема 3"], "Тема 2":["подтема 1", "подтема 2", "подтема 3"],"Тема 3":["подтема 1", "подтема 2", "подтема 3"]}
+
 
 @route('/')
 def home():
-    return template('firstPage.tpl')
+    return template('topics/firstPage.tpl', items=topics)
+
+@route('/topics/<topicName>')
+def topic(topicName):
+    return template(f'topics/{topicName}.tpl', items = topics)
+
 
 run(host='localhost', port=8080)
