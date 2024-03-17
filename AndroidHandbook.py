@@ -9,11 +9,11 @@ topics = {"Тема 1":["firstPage", "secondPage", "подтема 3"], "Тем�
 
 @route('/')
 def home():
-    return template('topics/firstPage.tpl', items=topics)
+    return template('base.tpl', items=topics, topic = template('topics/firstPage.tpl'), title = 'Home')
 
 @route('/topics/<topicName>')
 def topic(topicName):
     return template(f'topics/{topicName}.tpl', items = topics)
 
 
-run(host='localhost', port=8080)
+run(host='localhost', port=8080)    
