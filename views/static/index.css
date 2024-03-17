@@ -35,6 +35,13 @@
     
     
 }
+
+.hav-header{
+    display: flex;
+    flex-direction: row;
+    
+}
+
 .topic{
     grid-area: topic;
     background-color: chartreuse;
