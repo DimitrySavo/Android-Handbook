@@ -17,7 +17,7 @@ def home():
 
 @route('/topics/<topicName>')#route to topic page
 def topic(topicName):
-    return template(f'topics/{topicName}.tpl', items = topics)
+    return template('base.tpl', items=topics, topic = template(f'topics/{topicName}.tpl'),  title = f'{topicName}')
 
 @route('/About')#route to about page
 def about():

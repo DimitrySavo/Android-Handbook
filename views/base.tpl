@@ -8,9 +8,10 @@
 </head>
 <body>
     <header class="header">
-        <h1>Header</h1>
+        <a href="/" class="Header-link">
+            <h1>Android Handbooks</h1>
+        </a>
         <div class="nav-header">
-            <a href="/" class="Header-link">Home</a>
             <a href="/About" class="Header-link">About Us</a>
             <a href="/Contacts" class="Header-link">Contacts</a>
         </div>
@@ -23,7 +24,9 @@
                     <li>{{ key }}
                         <ul class="topics-list">
                             % for item in value:
-                                <li><a href="/topics/{{ item }}">{{ item }}</a></li>
+                            <a href="/topics/{{ item }}">
+                                <li>{{ item }}</li>
+                            </a>
                             % end
                         </ul>
                     </li>
