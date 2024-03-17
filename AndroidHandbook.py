@@ -13,7 +13,7 @@ def home():
 
 @route('/topics/<topicName>')
 def topic(topicName):
-    return template(f'topics/{topicName}.tpl', items = topics)
+    return template('base.tpl', items=topics, topic = template(f'topics/{topicName}.tpl'),  title = f'{topicName}')
 
 @route('/About')
 def about():
