@@ -15,5 +15,8 @@ def home():
 def topic(topicName):
     return template(f'topics/{topicName}.tpl', items = topics)
 
+@route('/About')
+def about():
+    return template('about.tpl')
 
 run(host='localhost', port=8080)    
