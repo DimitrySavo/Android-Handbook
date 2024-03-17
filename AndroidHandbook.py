@@ -23,4 +23,4 @@ def topic(topicName):
 def about():
     return template('about.tpl')
 
-run(host='localhost', port=8080)    
+run(host='localhost', port=8080)

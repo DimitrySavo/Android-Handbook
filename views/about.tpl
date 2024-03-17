@@ -7,6 +7,15 @@
     <title>Информация о создателях сайта</title>
 </head>
 <body>
+    <header class="header">
+        <h1>Header</h1>
+        <div class="nav-header">
+            <a href="/" class="Header-link">Home</a>
+            <a href="/About" class="Header-link">About Us</a>
+            <a href="/Contacts" class="Header-link">Contacts</a>
+        </div>
+    </header>
+
 
 <div class="container">
     <h1>Информация о создателях сайта</h1>
@@ -57,5 +66,9 @@
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <h1>Footer</h1>
+</footer>
 </body>
 </html>
