@@ -9,6 +9,11 @@
 <body>
     <header class="header">
         <h1>Header</h1>
+        <div class="nav-header">
+            <a href="/" class="Header-link">Home</a>
+            <a href="/About" class="Header-link">About Us</a>
+            <a href="/Contacts" class="Header-link">Contacts</a>
+        </div>
     </header>
 
     <section class="main-section">
@@ -27,7 +32,7 @@
         </div>
         
         <div class="topic">
-            {{ !base }}
+            {{ !topic }}
         </div>
     </section>
 
