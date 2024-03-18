@@ -19,6 +19,7 @@
 
 <div class="container">
     <h1>Информация о создателях сайта</h1>
+    <div style="display: flex; justify-content: center;">
     <div class="creator-info">
         <div class="creator">
             <div>
@@ -65,6 +66,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <footer class="footer">

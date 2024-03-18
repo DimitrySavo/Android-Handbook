@@ -110,10 +110,15 @@ h1 {
     color: #bbbbbb;
 }
 .creator-info {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
+    justify-content: center;
+    align-items: center;
 }
 .creator {
     margin-bottom: 20px;
+    width: 100%;
 }
 .creator img {
     width: 100px;
