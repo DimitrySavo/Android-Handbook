@@ -134,9 +134,17 @@ h1 {
     display: flex;
     flex-direction: row;
     align-items: center;
+    transform: scale(1);
+    transition-property: scale, color;
+    transition-duration: 0.5s;
 }
 .Creator-forBack{
     text-align: center;
     margin-top: 20px;
+}
+
+.Creator-Image:hover{
+    transform: scale(1.2);
+    background-color: #5116b1;
 }
 
