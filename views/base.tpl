@@ -9,7 +9,7 @@
 <body>
     <header class="header">
         <a href="/" class="Header-link">
-            <h1>Android Handbooks</h1>
+            <h1>Android Handbook</h1>
         </a>
         <div class="nav-header">
             <a href="/About" class="Header-link">About Us</a>
