@@ -124,20 +124,24 @@ a {
     color: #bbbbbb;
 }
 
-.topics-list a{
+.topics-list li>a{
+    padding: 10px;
     list-style: none;
     margin-left: 10px;
     font-size: 18px;
     font-weight: normal;
     color: #bbbbbb;
+
 }
 
-.topics-list li{
-    margin: 5px;
+.topics-list a>li{
+    padding: 5px;
+    transition: background-color 0.1s;
 }
 
 .topics-list li:hover{
     border-end-end-radius: 5px;
+    border-start-end-radius: 5px;
     background-color: #5116b1;
 }
 
