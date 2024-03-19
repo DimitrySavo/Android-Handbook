@@ -19,10 +19,12 @@
 
 <div class="container">
     <h1>Contact Information</h1>
+    <div style="display: flex; justify-content: center;">
     <div class="contact-info">
         <p><strong>Email:</strong> androidHandbook@gmail.com</p>
         <p><strong>Phone:</strong> +55555555555</p>
         <p><strong>Address:</strong> St Petersburg. Guap</p>
+    </div>
     </div>
 </div>
 
