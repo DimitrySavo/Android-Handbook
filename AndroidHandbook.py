@@ -23,4 +23,8 @@ def topic(topicName):
 def about():
     return template('about.tpl')
 
+@route('/Contacts')
+def contact():
+    return template('contact.tpl')
+
 run(host='localhost', port=8080)
