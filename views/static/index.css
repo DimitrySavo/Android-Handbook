@@ -174,17 +174,6 @@ h1 {
     margin-right: 20px;
 }
 
-.creator h2 {
-    margin-top: 0;
-    color: #333;
-}
-
-.creator p, .creator a {
-    color: #666;
-    margin-bottom: 5px;
-    text-decoration: none;
-}
-
 .Creator-Image{
     background-color: #444;
     padding: 5% 2%;
@@ -199,6 +188,10 @@ h1 {
     align-items: center;
 }
 
+.Creator-Image *{
+    color: #bbbbbb;
+}
+
 .Creator-Image:hover{
     transform: scale(1.2);
     background-color: #5116b1;
@@ -210,5 +203,7 @@ h1 {
     margin-top: 20px;
 }
 
-
+.contact-info{
+    color: #bbbbbb;
+}
 
