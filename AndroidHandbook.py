@@ -8,7 +8,7 @@ def static(filename):
 def getImage(filename):
     return static_file(filename, root='./views/static/images')
 
-topics = {"Тема 1":["firstPage", "secondPage", "подтема 3"], "Тема 2":["подтема 1", "подтема 2", "подтема 3"],"Тема 3":["подтема 1", "подтема 2", "подтема 3"]}
+topics = {"Тема 1":["firstPage", "secondPage"]}
 
 
 @route('/')#route to home page
