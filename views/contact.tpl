@@ -18,7 +18,7 @@
     </header>
 
 <div class="container">
-    <h1>Contact Information</h1>
+    <h1>Контактная информация</h1>
     <div style="display: flex; justify-content: center;">
         <div class="contact-info">
             <p><strong>Email:</strong> androidHandbook@gmail.com</p>
