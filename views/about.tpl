@@ -66,11 +66,6 @@
                 </a>
                 </div>
             </div>
-            <div class="Creator-forBack">
-                <a href="/" >
-                    <h2>На главную</h2>
-                </a>
-            </div>
         </div>
     </div>
 </div>
