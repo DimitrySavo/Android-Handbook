@@ -14,6 +14,7 @@
         <div class="nav-header">
             <a href="/About" class="Header-link">About Us</a>
             <a href="/Contacts" class="Header-link">Contacts</a>
+            <a href="/Reviews" class="Header-link">Reviews</a>
         </div>
     </header>
 
