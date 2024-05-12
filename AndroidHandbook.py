@@ -27,4 +27,8 @@ def about():
 def contact():
     return template('contact.tpl')
 
+@route('/Reviews')
+def reviews():
+    return template('reviewsPage.tpl')
+
 run(host='localhost', port=8080)
