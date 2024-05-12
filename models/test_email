@@ -1,4 +1,4 @@
-import models.ValidationHelper as VH
+from ValidationHelper import Validation
 import unittest
 
 
@@ -27,10 +27,10 @@ mails_uncorrect = ["",
 class MailTest(unittest.TestCase):
     def test_T_mail(self):
         for mail in mails_correct:
-            self.assertTrue(VH.Validation.ValidateEmail(mail))
+            self.assertTrue(Validation.ValidateEmail(mail))
     def test_F_mail(self):
         for mail in mails_uncorrect:
-            self.assertFalse(VH.Validation.ValidateEmail(mail))
+            self.assertFalse(Validation.ValidateEmail(mail))
 
 
 if __name__ == '__main__':
