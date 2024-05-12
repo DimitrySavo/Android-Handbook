@@ -1,4 +1,5 @@
-from bottle import route, template, run, static_file
+from bottle import route, template, run, static_file, request
+import models.review as reviewClass
 
 @route('/static/<filename>')#route to static files
 def static(filename):
@@ -10,6 +11,9 @@ def getImage(filename):
 
 topics = {"Тема 1":["firstPage", "secondPage"]}
 
+reviewsList = []
+reviewsList.append(reviewClass.Review("!", "email", "review", True))
+reviewsList.append(reviewClass.Review("username", "fasfasfas", "r22312eview", False))
 
 @route('/')#route to home page
 def home():
@@ -29,6 +33,24 @@ def contact():
 
 @route('/Reviews')
 def reviews():
-    return template('reviewsPage.tpl')
+    return template('reviewsPage.tpl', reviews = reviewsList)
+
+@route('/submit', mathode = 'POST')
+def submit_review():
+    username = request.forms.get('username')
+    email = request.forms.get('user-email')
+    review = request.forms.get('user-review')
+    rating = request.forms.get('rating')
+
+    # Проверка, какая радиокнопка была выбрана
+    if rating == 'like':
+        rating_value = True
+    elif rating == 'dislike':
+        rating_value = False
+
+    new_review = reviewClass.Review(username, email, review, rating_value)
+
+    reviewsList.apeend(new_review)
+
 
 run(host='localhost', port=8080)

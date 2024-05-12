@@ -226,21 +226,75 @@ h1 {
 .reviews-section{
     display: flex;
     flex-direction: column;
-    margin: 20px, 30px;
+    background-color: #333;
+    padding: 20px 30px;
 }
 
 .review-form{
     display: flex;
     flex-direction: column;
     padding: 20px;
+    max-width: 100%;
 }
 
 .single-line-text{
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 10px;
     width: 50%;
+    margin: 10px 5px;
+    background-color: #444;
+    color: #fff;
 }
 
 .multiline-text{
-    
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 5px;
+    min-height: 50px;
+    max-height: 300px;
+    min-width: 300px;
+    max-width: 100%;
+    background-color: #444;
+    color: #fff;
+}
+
+.bottom-review-div{
+    min-height: 40px;
+    display: grid;
+    grid-template: 'rating sumbit';
+    grid-template-columns: repeat(2, 1fr);
+    flex-direction: row;
+    align-items: center;
+}
+
+.rating{
+    padding: 0px 10px;
+    display: flex;
+    grid-area: rating;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.radio-rating{
+    margin: 5px;
+}
+
+.like{
+    color: #00ff00;
+}
+
+.dislike{
+    color: #ff0000;
+}
+
+.send-review{
+    padding: 10px 15px;
+    border-radius: 10px;
+    justify-self: end;
+    background-color: #444;
+    border-color: #00706b;
+    color: #00706b;
+    border-width: 1px;
+    grid-area: sumbit;
 }

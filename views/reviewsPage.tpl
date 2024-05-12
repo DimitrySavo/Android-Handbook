@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/53ff410a04.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/index.css">
     <title>Reviews</title>
 </head>
@@ -21,18 +21,38 @@
 
     <section class="reviews-section">
         <form class = "review-form">
-            <input id="username" class="single-line-text" type="text" placeholder="Имя(будет видно остальным пользователям)"/>
-            <input id="user-email" class="single-line-text" type="text" placeholder="E-mail(для авторизации)"/>
-            <input id="user-review" class="multiline-text" type="text" placeholder="Оставьте ваш отзыв"/>
-            <div class="starts-div">
-                <input type="radio" class="like" name="rating">
-                    <i class="fa fa-thumbs-up"></i>
-                </input> 
-                <input type="radio" class="dislike" name="rating">
-                    <i class="fa fa-thumbs-down"></i>
-                </input> 
+            <input name="username" id="username" class="single-line-text" type="text" placeholder="Имя(будет видно остальным пользователям)"/>
+            <input name="user-email" id="user-email" class="single-line-text" type="text" placeholder="E-mail(для авторизации)"/>
+            <textarea name="user-review" id="user-review" class="multiline-text" placeholder="Оставьте ваш отзыв"></textarea>
+            <div class="bottom-review-div">
+                <div class="rating">
+                    <input type="radio" class="radio-rating" name="rating">
+                        <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
+                    </input> 
+                    <input type="radio" class="radio-rating" name="rating">
+                        <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
+                    </input>  
+                </div>
+                
+                <input type="submit" value="Send" class="send-review"></input>
             </div>
         </form>
+
+        <div class="review-col">
+            {% for $i=0 to reviews.count() %}
+                <h4 class="username-heading">
+                    {{ reviews[i].username }}
+                </h4>
+                <span class="user-review">
+                    {{ reviews[i].text }}
+                </span>
+                {% if reviews[i].rating %}
+                    <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
+                {% else %}
+                    <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
+                {% endif %}
+            {% endfor %}
+        </div>
     </section>
     
     <footer class="footer">
