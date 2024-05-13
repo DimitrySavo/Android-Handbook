@@ -35,6 +35,10 @@ def contact():
 def reviews():
     return template('reviewsPage.tpl', reviews = reviewsList)
 
+@route('/Твоя страница')# Замени надпись на название твоей страницы. Какое хочешь. Длаьше в base.tpl смотри коммент
+def goToNewPage():
+    return template('Здесь напиши название своего файла как в других функциях')
+
 @route('/submit', mathode = 'POST')
 def submit_review():
     username = request.forms.get('username')

@@ -39,19 +39,23 @@
         </form>
 
         <div class="review-col">
-            {% for $i=0 to reviews.count() %}
-                <h4 class="username-heading">
-                    {{ reviews[i].username }}
-                </h4>
-                <span class="user-review">
-                    {{ reviews[i].text }}
-                </span>
-                {% if reviews[i].rating %}
-                    <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
-                {% else %}
-                    <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
-                {% endif %}
-            {% endfor %}
+            {% if reviews and reviews[0].username is defined %}
+                {% for item in reviews %}
+                    <h4 class="username-heading">
+                        {{ item.username }}
+                    </h4>
+                    <span class="user-review">
+                        {{ item.text }}
+                    </span>
+                    {% if item.rating %}
+                        <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
+                    {% else %}
+                        <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>No reviews or reviews do not have a username.</p>
+            {% endif %}
         </div>
     </section>
     
