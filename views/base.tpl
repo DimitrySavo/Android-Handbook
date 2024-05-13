@@ -15,7 +15,7 @@
             <a href="/About" class="Header-link">About Us</a>
             <a href="/Contacts" class="Header-link">Contacts</a>
             <a href="/Reviews" class="Header-link">Reviews</a>
-            <a href = "/Твоя страница"></a>
+            <a href = "/Твоя страница" class="Header-link"></a>
             <!-- Тут замени на такое же название, как в файле с функцией -->
         </div>
     </header>
