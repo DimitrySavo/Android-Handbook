@@ -4,4 +4,3 @@ class Review:
         self.email = email
         self.text = text
         self.rating = rating
-

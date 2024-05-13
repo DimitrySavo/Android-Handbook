@@ -14,6 +14,10 @@ topics = {"Тема 1":["firstPage", "secondPage"]}
 reviewsList = []
 reviewsList.append(reviewClass.Review("!", "email", "review", True))
 reviewsList.append(reviewClass.Review("username", "fasfasfas", "r22312eview", False))
+reviewsList.append(reviewClass.Review("username2", "fasfasda213sfas", "r2asdasd2312eview", False))
+
+for item in reviewsList:
+    print(item.username)
 
 @route('/')#route to home page
 def home():
