@@ -20,7 +20,7 @@
     </header>
 
     <section class="reviews-section">
-        <form class = "review-form">
+        <form class = "review-form" action="/submit_review" method="post">
             <input name="username" id="username" class="single-line-text" type="text" placeholder="Имя(будет видно остальным пользователям)"/>
             <input name="user-email" id="user-email" class="single-line-text" type="text" placeholder="E-mail(для авторизации)"/>
             <textarea name="user-review" id="user-review" class="multiline-text" placeholder="Оставьте ваш отзыв"></textarea>
