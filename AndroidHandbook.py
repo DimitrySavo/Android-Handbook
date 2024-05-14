@@ -65,7 +65,14 @@ def submit_review():
 
     reviewsList = load_reviews(FILE_PATH)
 
+    for review in reviewsList:
+        if new_review.email == review.email:
+            reviewsList.remove(review)
+        elif new_review.username == review.username:
+            return "Этот логин уже существует"
+
     reviewsList.append(new_review)
+
 
     with open(FILE_PATH, "w") as file:
         reviewsList_dict = [review.to_dict() for review in reviewsList]
