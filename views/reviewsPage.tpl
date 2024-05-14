@@ -48,7 +48,7 @@
                         {{ item.text }}
                     </span>
                     <span class="review-date-span">
-                        Дата отзыва: {{ item.dateCreate}}
+                        Дата отзыва: {{ item.dateCreate }}
                     </span>
                     <div class="bottom-rating-container">
                         % if item.rating:
