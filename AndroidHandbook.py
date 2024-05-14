@@ -1,9 +1,46 @@
-from bottle import route, template, run, static_file, request, post
+from bottle import route, template, run, static_file, request, post, response
 import models.review as reviewClass
 import models.ValidationHelper as VH
 import os
 import json
 from datetime import datetime
+
+# Мы создаем список карточек новостей
+news_cards = []
+
+# Функция для проверки URL
+def is_valid_url(url):
+    # Здесь можно добавить более строгие проверки
+    return url.startswith('http://') or url.startswith('https://')
+
+@route('/')  # Главная страница
+def index():
+    return open('index.html').read()
+
+@route('/submit', method='POST')  # Обработка отправленной формы для добавления новой карточки
+def submit():
+    title = request.forms.get('title')
+    description = request.forms.get('description')
+    image_url = request.forms.get('image_url')
+    link = request.forms.get('link')
+
+    # Проверка корректности введенных данных
+    if not (title and description and image_url and link):
+        return json.dumps({"error": "Все поля должны быть заполнены"})
+
+    if not is_valid_url(image_url) or not is_valid_url(link):
+        return json.dumps({"error": "Некорректный URL"})
+
+    # Создаем объект карточки
+    new_card = {"title": title, "description": description, "image_url": image_url, "link": link}
+
+    # Добавляем карточку в список карточек
+    news_cards.append(new_card)
+
+    # Возвращаем данные о добавленной карточке в формате JSON
+    response.content_type = 'application/json'
+    return json.dumps(new_card)
+
 
 @route('/static/<filename>')#route to static files
 def static(filename):
@@ -38,9 +75,10 @@ def reviews():
     reviewsList = load_reviews(FILE_PATH)
     return template('reviewsPage.tpl', reviews = reviewsList)
 
-@route('/Твоя страница')# Замени надпись на название твоей страницы. Какое хочешь. Длаьше в base.tpl смотри коммент
+@route('/CurrentNews')# Замени надпись на название твоей страницы. Какое хочешь. Длаьше в base.tpl смотри коммент
 def goToNewPage():
-    return template('Здесь напиши название своего файла как в других функциях')
+    return template('currentNews.tpl')
+
 
 @route('/submit_review', method='POST')
 def submit_review():
