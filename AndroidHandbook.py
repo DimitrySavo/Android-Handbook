@@ -91,4 +91,9 @@ def load_reviews(file_path):
                 reviews.append(reviewClass.Review.from_dict(review_dict))
     return reviews
 
+
+@route('/helpfulTopics')
+def helpfulTopics():
+    return template('helpfulTopics.tpl')
+
 run(host='localhost', port=8080)
