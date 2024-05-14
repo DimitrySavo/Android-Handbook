@@ -40,17 +40,24 @@
 
         <div class="review-col">
                 % for item in reviews: 
+                <div class="review-container">
                     <h4 class="username-heading">
                         {{ item.username }}
                     </h4>
                     <span class="user-review">
                         {{ item.text }}
                     </span>
-                    % if item.rating:
-                        <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
-                    % else:
-                        <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
-                    % end
+                    <span class="review-date-span">
+                        Дата отзыва: {{ item.dateCreate}}
+                    </span>
+                    <div class="bottom-rating-container">
+                        % if item.rating:
+                            <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
+                        % else:
+                            <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
+                        % end   
+                    </div>
+                </div>
                 % end
         </div>
     </section>
