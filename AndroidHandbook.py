@@ -34,13 +34,7 @@ def contact():
 
 @route('/Reviews')
 def reviews():   
-
-    if os.path.exists(FILE_PATH):
-        with open(FILE_PATH, 'r') as file:
-            reviewsList = json.load(file)
-    else:
-        reviewsList = []
-
+    reviewsList = load_reviews(FILE_PATH)
     return template('reviewsPage.tpl', reviews = reviewsList)
 
 @route('/Твоя страница')# Замени надпись на название твоей страницы. Какое хочешь. Длаьше в base.tpl смотри коммент
@@ -60,22 +54,16 @@ def submit_review():
         rating_value = True
     else:
         rating_value = False
-
-    
-    if not rating:
-        return#TODO
     
     if not VH.Validation.ValidateEmail(email):
-        return#TODO
+        return "Неверный формат почты"
     
     if not VH.Validation.ValidateUserName(username):
-        return#TODO
+        return "Неверное имя пользователя"
 
     new_review = reviewClass.Review(username, email, review, rating_value)
 
-    reviewsList = []
-
-    
+    reviewsList = load_reviews(FILE_PATH)
 
     reviewsList.append(new_review)
 
@@ -85,6 +73,13 @@ def submit_review():
     
     
     
-
+def load_reviews(file_path):
+    reviews = []
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            reviewsList_dict = json.load(file)
+            for review_dict in reviewsList_dict:
+                reviews.append(reviewClass.Review.from_dict(review_dict))
+    return reviews
 
 run(host='localhost', port=8080)

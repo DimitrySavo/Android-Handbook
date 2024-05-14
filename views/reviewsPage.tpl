@@ -49,7 +49,7 @@
                     % if item.rating:
                         <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
                     % else:
-                        <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>\
+                        <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
                     % end
                 % end
         </div>
