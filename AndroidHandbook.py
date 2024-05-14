@@ -3,6 +3,7 @@ import models.review as reviewClass
 import models.ValidationHelper as VH
 import os
 import json
+from datetime import datetime
 
 @route('/static/<filename>')#route to static files
 def static(filename):
@@ -49,6 +50,7 @@ def submit_review():
     rating = request.forms.get('rating')
 
 
+
     # Проверка, какая радиокнопка была выбрана
     if rating == 'like':
         rating_value = True
@@ -61,7 +63,7 @@ def submit_review():
     if not VH.Validation.ValidateUserName(username):
         return "Неверное имя пользователя"
 
-    new_review = reviewClass.Review(username, email, review, rating_value)
+    new_review = reviewClass.Review(username, email, review, rating_value, datetime.now())
 
     reviewsList = load_reviews(FILE_PATH)
 
