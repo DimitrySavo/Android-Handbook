@@ -235,6 +235,7 @@ h1 {
     flex-direction: column;
     padding: 20px;
     max-width: 100%;
+    border-bottom: 2px solid #ffffff20;
 }
 
 .single-line-text{
@@ -297,4 +298,43 @@ h1 {
     color: #00706b;
     border-width: 1px;
     grid-area: sumbit;
+}
+
+.review-container{
+    display: grid;
+    grid-template:
+    'login login'
+    'reviewtext reviewtext'
+    'date rating';
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    border-bottom: 2px solid #ffffff20;
+}
+
+.username-heading{
+    color:#00706b;
+    font-size: 12px;
+    grid-area: login;
+    padding-left: 30px;
+    padding-bottom: 5px;
+}
+
+.user-review{
+    color: #00706b;
+    font-size: 20px;
+    grid-area: reviewtext;
+}
+
+.review-date-span{
+    padding: 10px;
+    font-size: 10px;
+    color: #aaaaaa40;
+    grid-area: date;
+}
+
+.bottom-rating-container{
+    display: flex;
+    padding: 10px;
+    grid-area: rating;
+    justify-content: end;
 }
