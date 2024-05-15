@@ -5,8 +5,20 @@ import os
 import json
 from datetime import datetime
 
+# Функция для загрузки карточек из JSON файла
+def load_news_cards(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    return []
+
 # Мы создаем список карточек новостей
-news_cards = []
+news_cards = load_news_cards("news_cards.json")
+
+# Функция для сохранения карточек в JSON файл
+def save_news_cards(file_path):
+    with open(file_path, "w") as file:
+        json.dump(news_cards, file)
 
 # Функция для проверки URL
 def is_valid_url(url):
@@ -37,8 +49,11 @@ def submit():
     # Добавляем карточку в список карточек
     news_cards.append(new_card)
 
+    # Сохраняем обновленный список карточек в JSON файл
+    save_news_cards("news_cards.json")
+    
     # Возвращаем данные о добавленной карточке в формате JSON
-    response.content_type = 'application/json'
+    response.content_type = 'application.json'
     return json.dumps(new_card)
 
 
@@ -77,7 +92,9 @@ def reviews():
 
 @route('/CurrentNews')# Замени надпись на название твоей страницы. Какое хочешь. Длаьше в base.tpl смотри коммент
 def goToNewPage():
-    return template('currentNews.tpl')
+    news_cards = load_news_cards("news_cards.json")
+    submit()
+    return template('currentNews.tpl', news_cards=news_cards)
 
 
 @route('/submit_review', method='POST')
