@@ -1,0 +1,58 @@
+/* static/cards.css */
+
+/* Стили для контейнера новостных карточек */
+.news-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left; /* Изменено на space-between для отделения карточек */
+}
+
+/* Стили для каждой отдельной новостной карточки */
+.news-card {
+    width: calc(33.33% - 20px); 
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Эффект увеличения при наведении на новостную карточку */
+.news-card:hover {
+    transform: scale(1.02);
+}
+
+/* Эффект уменьшения при клике на новостную карточку */
+.news-card:active {
+    transform: scale(0.95);
+}
+
+/* Стили для изображения внутри карточки */
+.news-card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Эффект увеличения изображения при наведении на него */
+.news-card:hover img {
+    transform: scale(1.0); /* Уменьшение масштаба изображения */
+}
+
+/* Стили для заголовка в описании карточки */
+.card-description h2 {
+    margin-top: 5px; /* Добавление отступа сверху */
+}
+
+.card-description p {
+    margin: 10px;
+    color: #ccc; /* Добавление отступа сверху */
+}
+
+.header {
+    position: relative; /* Обязательно установите позицию на relative или absolute */
+    z-index: 999; /* Установите высокий уровень z-index */
+}

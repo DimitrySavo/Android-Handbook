@@ -1,0 +1,35 @@
+/* Стили для формы */
+#add-news-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#news-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+#news-form input[type="text"],
+#news-form input[type="url"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#news-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#news-form button:hover {
+    background-color: #0056b3;
+}
