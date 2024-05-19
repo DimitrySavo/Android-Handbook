@@ -4,6 +4,7 @@ import models.ValidationHelper as VH
 import os
 import json
 from datetime import datetime
+from models.topic import Topic
 
 # Функция для загрузки карточек из JSON файла
 def load_news_cards(file_path):
@@ -65,17 +66,18 @@ def static(filename):
 def getImage(filename):
     return static_file(filename, root='./views/static/images')
 
-topics = {"Тема 1":["firstPage", "secondPage"]}
+topicsHelpful = {"Тема 1":["firstPage", "secondPage"]}
 
 FILE_PATH = "reviews.json"
+FILE_PATH_TOPICS = "topics.json"
 
 @route('/')#route to home page
 def home():
-    return template('base.tpl', items=topics, topic = template('topics/firstPage.tpl'), title = 'Home')
+    return template('base.tpl', items=topicsHelpful, topic = template('topics/firstPage.tpl'), title = 'Home')
 
 @route('/topics/<topicName>')#route to topic page
 def topic(topicName):
-    return template('base.tpl', items=topics, topic = template(f'topics/{topicName}.tpl'),  title = f'{topicName}')
+    return template('base.tpl', items=topicsHelpful, topic = template(f'topics/{topicName}.tpl'),  title = f'{topicName}')
 
 @route('/About')#route to about page
 def about():
@@ -103,7 +105,6 @@ def submit_review():
     email = request.forms.get('user-email')
     review = request.forms.get('user-review')
     rating = request.forms.get('rating')
-
 
 
     # Проверка, какая радиокнопка была выбрана
@@ -145,5 +146,42 @@ def load_reviews(file_path):
             for review_dict in reviewsList_dict:
                 reviews.append(reviewClass.Review.from_dict(review_dict))
     return reviews
+
+
+def load_topics(file_path):
+    helpfulTopics = []
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            if os.stat(file_path).st_size != 0:  # check if file is not empty
+                topics_dict = json.load(file)
+                for topic_dict in topics_dict:
+                    helpfulTopics.append(Topic.from_dict(topic_dict))
+    return helpfulTopics
+
+@route('/helpfulTopics')
+def helpfulTopics():
+    topicsHelpful = load_topics(FILE_PATH_TOPICS)
+    return template('helpfulTopics.tpl', topics=topicsHelpful)
+
+
+@route('/submitTopic', method='POST')
+def submit_topic():
+    title = request.forms.get('topicTitle')
+    text = request.forms.get('topicText')
+    image = request.forms.get('topicImage')
+    url = request.forms.get('topicURL')
+
+    new_topic = Topic(title, text, image, url)
+
+    topics = load_topics(FILE_PATH_TOPICS)
+
+    topics.append(new_topic)
+
+    with open(FILE_PATH_TOPICS, "w") as file:
+        topics_dict = [topic.to_dict() for topic in topics]
+        json.dump(topics_dict, file)
+
+    return template('helpfulTopics.tpl', topics=topics)
+
 
 run(host='localhost', port=8080)

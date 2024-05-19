@@ -27,10 +27,10 @@
             <textarea name="user-review" id="user-review" class="multiline-text" placeholder="Оставьте ваш отзыв"></textarea>
             <div class="bottom-review-div">
                 <div class="rating">
-                    <input type="radio" class="radio-rating" name="rating">
+                    <input type="radio" class="radio-rating" name="rating" value="like">
                         <i class="fa-solid fa-thumbs-up fa-2xl icon like"></i>
                     </input> 
-                    <input type="radio" class="radio-rating" name="rating">
+                    <input type="radio" class="radio-rating" name="rating" value="dislike">
                         <i class="fa fa-thumbs-down fa-2xl icon dislike"></i>
                     </input>  
                 </div>
@@ -49,7 +49,7 @@
                         {{ item.text }}
                     </span>
                     <span class="review-date-span">
-                        Дата отзыва: {{ item.dateCreate}}
+                        Дата отзыва: {{ item.dateCreate }}
                     </span>
                     <div class="bottom-rating-container">
                         % if item.rating:
