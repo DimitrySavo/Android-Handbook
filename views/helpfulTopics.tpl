@@ -21,13 +21,42 @@
     </header>
 
     <section class="htopics-section">
-        <div class="htopic">
-            <image class="htopic-image" src="..\static\images\Dima.jpg" alt="htopic1"></image>
-            <h2 class="htopic-title">Как установить Android Studio</h2>
-            <p class="htopic-preview">Инструкция по установке Android Studio на Windows, macOS и Linux</p>
-            <p class="htopic-link">тут будет ваша ссылка</p>
+        <div class="topics-col">
+            % for item in topics:
+            <div class="htopic">
+                <img class="htopic-image" src="{{item.image}}" alt="htopic1"></img>
+                <h2 class="htopic-title">{{item.title}}</h2>
+                <p class="htopic-preview">{{item.text}}</p>
+                <p class="htopic-link"><a href="{{item.url}}">{{ item.url }}</a></p>
+            </div>
+            % end
         </div>
+        
+
+
+        <section>
+            <div class="htopic-new-topic">
+                <form class="topic-form" action="/submitTopic" method="POST">
+                    <label for="topicTitle">Title:</label>
+                    <input type="text" id="topicTitle" name="topicTitle" required><br><br>
+                    
+                    <label for="topicText">Text:</label>
+                    <textarea id="topicText" name="topicText" required></textarea><br><br>
+                    
+                    <label for="topicImage">Image URL:</label>
+                    <input type="text" id="topicImage" name="topicImage" required><br><br>
+                    
+                    <label for="topicURL">Main Topic URL:</label>
+                    <input type="text" id="topicURL" name="topicURL" required><br><br>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </section>
     </section>
+
+    
+    
 
     <footer class="footer">
         <h1>© 2024 Android Handbook, inc</h1>
