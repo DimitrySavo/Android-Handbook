@@ -45,24 +45,20 @@ def submit():
     # Проверка корректности введенных данных
     if not (title and description and image_url and link):
         return json.dumps({"error": "Все поля должны быть заполнены"})
-
-    if not is_valid_url(image_url) or not is_valid_url(link):
+    elif not is_valid_url(image_url) or not is_valid_url(link):
         return json.dumps({"error": "Некорректный URL"})
-
-    if not VH.Validation.ValidateDate(date):
+    elif not VH.Validation.ValidateDate(date):
         return json.dumps({"error": "Некорректная Дата"})
-    
-    # Создаем объект карточки
-    new_card = {"title": title, "description": description, "image_url": image_url, "link": link, "date": date}
+    else: 
+        new_card = {"title": title, "description": description, "image_url": image_url, "link": link, "date": date}
+        # Добавляем карточку в список карточек
+        news_cards.append(new_card)
 
-    # Добавляем карточку в список карточек
-    news_cards.append(new_card)
-
-    # Сохраняем обновленный список карточек в JSON файл
-    save_news_cards("news_cards.json")
-    
-    # Возвращаем данные о добавленной карточке в формате JSON
-    response.content_type = 'application.json'
+        # Сохраняем обновленный список карточек в JSON файл
+        save_news_cards("news_cards.json")
+        
+        # Возвращаем данные о добавленной карточке в формате JSON
+        response.content_type = 'application.json'
     return json.dumps(new_card)
 
 
