@@ -30,7 +30,7 @@
                 <input type="text" name="description" placeholder="Описание" required maxlength="150">
                 <input type="url" name="image_url" placeholder="URL изображения" required>
                 <input type="url" name="link" placeholder="Ссылка на новость" required>
-                <input type="date" name="date" required>
+                <input type="date" name="date" required="true" max="2024-05-21">
                 <button type="submit">Добавить</button>
             </form>
         </div>
