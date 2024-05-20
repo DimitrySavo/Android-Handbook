@@ -25,6 +25,11 @@ def is_valid_url(url):
     # Здесь можно добавить более строгие проверки
     return url.startswith('http://') or url.startswith('https://')
 
+# Функция для проверки URL
+def is_valid_data(data):
+    # Здесь можно добавить более строгие проверки
+    return VH.Validation.ValidateDate(data)
+
 @route('/')  # Главная страница
 def index():
     return open('index.html').read()
@@ -44,6 +49,9 @@ def submit():
     if not is_valid_url(image_url) or not is_valid_url(link):
         return json.dumps({"error": "Некорректный URL"})
 
+    if not VH.Validation.ValidateDate(date):
+        return json.dumps({"error": "Некорректная Дата"})
+    
     # Создаем объект карточки
     new_card = {"title": title, "description": description, "image_url": image_url, "link": link, "date": date}
 
