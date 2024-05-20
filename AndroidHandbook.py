@@ -35,7 +35,8 @@ def submit():
     description = request.forms.get('description')
     image_url = request.forms.get('image_url')
     link = request.forms.get('link')
-
+    date = request.forms.get('date')
+    
     # Проверка корректности введенных данных
     if not (title and description and image_url and link):
         return json.dumps({"error": "Все поля должны быть заполнены"})
@@ -44,7 +45,7 @@ def submit():
         return json.dumps({"error": "Некорректный URL"})
 
     # Создаем объект карточки
-    new_card = {"title": title, "description": description, "image_url": image_url, "link": link}
+    new_card = {"title": title, "description": description, "image_url": image_url, "link": link, "date": date}
 
     # Добавляем карточку в список карточек
     news_cards.append(new_card)
