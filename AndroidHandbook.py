@@ -59,7 +59,7 @@ def submit():
         
         # Возвращаем данные о добавленной карточке в формате JSON
         response.content_type = 'application.json'
-    return json.dumps(new_card)
+        return json.dumps(new_card)
 
 
 @route('/static/<filename>')#route to static files
