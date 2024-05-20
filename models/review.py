@@ -5,7 +5,7 @@ class Review:
         self.email = email
         self.text = text
         self.rating = rating
-        self.dateCreate = dateCreate.isoformat()  # Convert datetime to string
+        self.dateCreate = dateCreate
 
 
     def to_dict(self):
@@ -19,4 +19,4 @@ class Review:
     
     @classmethod
     def from_dict(cls, review_dict):
-        return cls(review_dict['username'], review_dict['email'], review_dict['text'], review_dict['rating'],datetime.strptime(review_dict['dateCreate'], '%Y-%m-%dT%H:%M:%S.%f'))
+        return cls(review_dict['username'], review_dict['email'], review_dict['text'], review_dict['rating'], review_dict['dateCreate'])

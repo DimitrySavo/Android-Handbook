@@ -152,40 +152,45 @@ def load_reviews(file_path):
     return reviews
 
 
-def load_topics(file_path):
+def load_topics(file_path): #Функция, которая десериализует из Json список статей
     helpfulTopics = []
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as file:
-            if os.stat(file_path).st_size != 0:  # check if file is not empty
-                topics_dict = json.load(file)
+    if os.path.exists(file_path):# Проверка существует ли путь
+        with open(file_path, 'r') as file: #Открывает для чтения
+            if os.stat(file_path).st_size != 0:  #Проверяет есть ли данные в файле
+                topics_dict = json.load(file)#Десериализует данные из json
                 for topic_dict in topics_dict:
-                    helpfulTopics.append(Topic.from_dict(topic_dict))
+                    helpfulTopics.append(Topic.from_dict(topic_dict))#Проходит по десериализованному списку и полует из списка объект Topic
     return helpfulTopics
 
-@route('/helpfulTopics')
+@route('/helpfulTopics')#Ссылка на страницу
 def helpfulTopics():
-    topicsHelpful = load_topics(FILE_PATH_TOPICS)
+    topicsHelpful = load_topics(FILE_PATH_TOPICS)#Загрузка данных из Json
     return template('helpfulTopics.tpl', topics=topicsHelpful)
 
 
-@route('/submitTopic', method='POST')
+@route('/submitTopic', method='POST')#Получение данных из формы на странице Полезных статей
 def submit_topic():
     title = request.forms.get('topicTitle')
     text = request.forms.get('topicText')
     image = request.forms.get('topicImage')
     url = request.forms.get('topicURL')
+    date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    telephoneNumber = request.forms.get('telephoneNumber')
 
-    new_topic = Topic(title, text, image, url)
+    if not VH.Validation.ValidateTelephone(telephoneNumber):
+        return "Неверный номер телефона"
 
-    topics = load_topics(FILE_PATH_TOPICS)
+    new_topic = Topic(title, text, image, url, date, telephoneNumber)# Создание объекта на основе полученных данных
 
-    topics.append(new_topic)
+    topics = load_topics(FILE_PATH_TOPICS)#Чтение из json уже существующих данных
+
+    topics.insert(0, new_topic)
 
     with open(FILE_PATH_TOPICS, "w", encoding="UTF-8") as file:
         topics_dict = [topic.to_dict() for topic in topics]
         json.dump(topics_dict, file)
 
-    return template('helpfulTopics.tpl', topics=topics)
+    return template('helpfulTopics.tpl', topics=topics)#Обновеляет страницу
 
 
 run(host='localhost', port=8080)
