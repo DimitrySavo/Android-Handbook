@@ -14,6 +14,8 @@
 
 #news-form input[type="text"],
 #news-form input[type="url"] {
+    width: 100px;
+    height: 50px;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
