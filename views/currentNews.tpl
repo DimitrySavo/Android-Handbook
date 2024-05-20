@@ -17,7 +17,8 @@
             <a href="/About" class="Header-link">About Us</a>
             <a href="/Contacts" class="Header-link">Contacts</a>
             <a href="/Reviews" class="Header-link">Reviews</a>
-            <a href="/CurrentNews" class="Header-link">Current News</a>
+            <a href="/helpfulTopics" class="Header-link">Helpful topics</a>
+            <a href = "/CurrentNews" class="Header-link">Current News</a>
         </div>
     </header>
 

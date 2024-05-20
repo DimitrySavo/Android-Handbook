@@ -118,6 +118,9 @@ def submit_review():
     
     if not VH.Validation.ValidateUserName(username):
         return "Неверное имя пользователя"
+    
+    if not VH.Validation.ValidateReviewText(review):
+        return "Текст отзыва содержит зарещенные слова или не правильной длинны"
 
     new_review = reviewClass.Review(username, email, review, rating_value, datetime.now())
 
@@ -129,19 +132,20 @@ def submit_review():
         elif new_review.username == review.username:
             return "Этот логин уже существует"
 
-    reviewsList.append(new_review)
+    reviewsList.insert(0, new_review)
 
-
-    with open(FILE_PATH, "w") as file:
+    with open(FILE_PATH, "w", encoding="UTF-8") as file:
         reviewsList_dict = [review.to_dict() for review in reviewsList]
         json.dump(reviewsList_dict, file)
+
+    return template('reviewsPage.tpl', reviews = reviewsList)
     
     
     
 def load_reviews(file_path):
     reviews = []
     if os.path.exists(file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r',encoding="UTF-8") as file:
             reviewsList_dict = json.load(file)
             for review_dict in reviewsList_dict:
                 reviews.append(reviewClass.Review.from_dict(review_dict))
@@ -177,7 +181,7 @@ def submit_topic():
 
     topics.append(new_topic)
 
-    with open(FILE_PATH_TOPICS, "w") as file:
+    with open(FILE_PATH_TOPICS, "w", encoding="UTF-8") as file:
         topics_dict = [topic.to_dict() for topic in topics]
         json.dump(topics_dict, file)
 

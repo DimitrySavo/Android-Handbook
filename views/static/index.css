@@ -314,7 +314,7 @@ h1 {
 
 .username-heading{
     color:#00706b;
-    font-size: 12px;
+    font-size: 18px;
     grid-area: login;
     padding-left: 30px;
     padding-bottom: 5px;
@@ -322,7 +322,7 @@ h1 {
 
 .user-review{
     color: #00706b;
-    font-size: 20px;
+    font-size: 24px;
     grid-area: reviewtext;
     resize: none;
 }
@@ -403,8 +403,4 @@ h1 {
 .htopic:hover{
     transform: scale(1.01);
     box-shadow: 1px 3px 20px -5px #00706b;
-}
-
-.htopic-new-topic{
-    
 }

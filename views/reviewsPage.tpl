@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-16">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/53ff410a04.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/index.css">
@@ -16,7 +16,8 @@
             <a href="/About" class="Header-link">About Us</a>
             <a href="/Contacts" class="Header-link">Contacts</a>
             <a href="/Reviews" class="Header-link">Reviews</a>
-            <a href ="/CurrentNews" class="Header-link">Current News</a>
+            <a href="/helpfulTopics" class="Header-link">Helpful topics</a>
+            <a href = "/CurrentNews" class="Header-link">Current News</a>
         </div>
     </header>
 
@@ -41,7 +42,7 @@
 
         <div class="review-col">
                 % for item in reviews: 
-                <div class="review-container">
+                <div class="review-container" lang="ru">
                     <h4 class="username-heading">
                         {{ item.username }}
                     </h4>
