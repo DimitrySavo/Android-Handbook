@@ -28,6 +28,7 @@ a {
     background-color: #333;
     border-bottom: 2px #666666 solid;
     display: grid;
+    z-index: 999;
     grid-template-columns: repeat(3, 1fr);
 }
 
@@ -341,70 +342,140 @@ h1 {
     justify-content: end;
 }
 
-.htopics-section{
+/* Центрирование формы и улучшение внешнего вида */
+.htopic-new-topic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.topic-form {
+    background-color: #333; /* Темный фон */
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    max-width: 600px; 
+    box-sizing: border-box; /* Учет padding в ширину */
+}
+
+.topic-form label {
+    font-weight: bold; 
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.topic-form input[type="text"],
+.topic-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555; 
+    border-radius: 4px; 
+    box-sizing: border-box; /* Учет padding в ширину */
+    resize: vertical; /* Вертикальное изменение размера */
+    background-color: #444; 
+    color: #fff; 
+}
+
+.topic-form textarea {
+    max-height: 300px; 
+}
+
+.topic-form input[type="submit"] {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.topic-form input[type="submit"]:hover {
+    background-color: #45a049; /* Темно-зеленый при наведении */
+}
+
+
+body {
+    background-color: #222; 
+    color: #fff; 
+}
+
+.topics-col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+    padding: 20px;
+    background-color: #222; 
+}
+
+.htopic {
+    background-color: #333; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    width: 300px; 
+    padding: 15px; 
+    box-sizing: border-box; 
+    transition: transform 0.3s; 
     display: flex;
     flex-direction: column;
-    background-color: #333;
-    padding: 20px 30px;
+    overflow: hidden; /* Скрытие переполнения */
 }
 
-.htopic{
-    display: grid;
-    grid-template:
-    'image title'
-    'image text'
-    'image link';
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
-    padding: 10px;
+.htopic:hover {
+    transform: scale(1.05); /* Увеличение при наведении */
+}
+
+.htopic-image {
+    width: 100%; /* Полная ширина */
+    height: 250px;
+    object-fit: cover; /* Полное отображение изображения */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     background-color: #444;
-    border: 2px solid #00706b;
-    border-radius: 25px;
-    overflow: hidden;
-    min-height: 200px;
-    max-height: 250px;
+    margin-bottom: 15px; /* Отступ между изображением и текстом */
 }
 
-.htopic-image{
-    grid-area: image;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+.htopic-title {
+    font-size: 1.5em;
+    margin: 0 0 10px 0; /* Отступ для заголовка */
+    color: #fff; 
+    word-wrap: break-word; /* Перенос длинных слов */
+    overflow-wrap: break-word; /* Перенос длинных слов */
 }
 
-.htopic-title{
-    grid-area: title;
-    color: #00706b;
-    font-size: 24px;
+.htopic-preview {
+    font-size: 1em;
+    margin: 0 0 15px 0; /* Отступ для превью */
+    color: #ccc; 
+    word-wrap: break-word; /* Перенос длинных слов */
+    overflow-wrap: break-word; /* Перенос длинных слов */
+}
+
+.htopic-link {
+    text-align: right; 
+    word-wrap: break-word; /* Перенос длинных URL */
+    overflow-wrap: break-word; /* Перенос длинных URL */
+    margin-top: auto; /* Отступ сверху для ссылки */
+}
+
+.htopic-link a {
+    color: #4CAF50; 
+    text-decoration: none; /* Без подчеркивания */
     font-weight: bold;
-    margin: 0px 0px 0px 20px;
+    word-wrap: break-word; /* Перенос длинных URL */
+    overflow-wrap: break-word; /* Перенос длинных URL */
 }
 
-.htopic-preview{
-    grid-area: text;
-    color: #00706b;
-    font-size: 20px;
-    color: #fff;
-    margin: 0px 0px 0px 20px;
-}
-
-.htopic-link{
-    grid-area: link;
-    color: #00706b;
-    font-size: 12px;
-    margin: 0px 0px 0px 20px;
-}
-
-.htopic{
-    margin: 10px;
-    transition: transform 0.5s, box-shadow 0.3s;
-}
-
-.htopic:hover{
-    transform: scale(1.01);
-    box-shadow: 1px 3px 20px -5px #00706b;
-}
-
-.htopic-new-topic{
-    
+.htopic-link a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
 }

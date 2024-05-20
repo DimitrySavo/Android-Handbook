@@ -27,6 +27,7 @@
                 <img class="htopic-image" src="{{item.image}}" alt="htopic1"></img>
                 <h2 class="htopic-title">{{item.title}}</h2>
                 <p class="htopic-preview">{{item.text}}</p>
+                <p class="htopic-date">Дата создания: {{item.date}}</p>
                 <p class="htopic-link"><a href="{{item.url}}">{{ item.url }}</a></p>
             </div>
             % end
@@ -41,13 +42,16 @@
                     <input type="text" id="topicTitle" name="topicTitle" required><br><br>
                     
                     <label for="topicText">Text:</label>
-                    <textarea id="topicText" name="topicText" required></textarea><br><br>
+                    <textarea id="topicText" name="topicText" required maxlength="400"></textarea><br><br>
                     
                     <label for="topicImage">Image URL:</label>
                     <input type="text" id="topicImage" name="topicImage" required><br><br>
                     
                     <label for="topicURL">Main Topic URL:</label>
                     <input type="text" id="topicURL" name="topicURL" required><br><br>
+
+                    <label for="telephoneNumber">Telephone Number:</label>
+                    <input type="text" id="telephoneNumber" name="telephoneNumber" required><br><br>
                     
                     <input type="submit" value="Submit">
                 </form>
