@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 class Validation():
 
@@ -17,7 +18,14 @@ class Validation():
     
     def ValidateUserName(userName):
         return len(userName) > 3 and len(userName) < 64
-    
+    @staticmethod
+    def ValidateDate(date_str):
+        try:
+            date = datetime.strptime(date_str, "%Y-%m-%d").date()
+            return date <= datetime.now().date()
+        except ValueError:
+            return False
+
 
     def ValidateReviewText(inputText):
         isValidated = True

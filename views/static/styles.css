@@ -14,12 +14,19 @@
 
 #news-form input[type="text"],
 #news-form input[type="url"] {
+    width: 100px;
+    height: 50px;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
+#news-form input[type="date"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 #news-form button {
     padding: 10px 20px;
     background-color: #007bff;

@@ -26,6 +26,11 @@ def is_valid_url(url):
     # Здесь можно добавить более строгие проверки
     return url.startswith('http://') or url.startswith('https://')
 
+# Функция для проверки URL
+def is_valid_data(data):
+    # Здесь можно добавить более строгие проверки
+    return VH.Validation.ValidateDate(data)
+
 @route('/')  # Главная страница
 def index():
     return open('index.html').read()
@@ -36,26 +41,26 @@ def submit():
     description = request.forms.get('description')
     image_url = request.forms.get('image_url')
     link = request.forms.get('link')
-
+    date = request.forms.get('date')
+    
     # Проверка корректности введенных данных
     if not (title and description and image_url and link):
         return json.dumps({"error": "Все поля должны быть заполнены"})
-
-    if not is_valid_url(image_url) or not is_valid_url(link):
+    elif not is_valid_url(image_url) or not is_valid_url(link):
         return json.dumps({"error": "Некорректный URL"})
+    elif not VH.Validation.ValidateDate(date):
+        return json.dumps({"error": "Некорректная Дата"})
+    else: 
+        new_card = {"title": title, "description": description, "image_url": image_url, "link": link, "date": date}
+        # Добавляем карточку в список карточек
+        news_cards.append(new_card)
 
-    # Создаем объект карточки
-    new_card = {"title": title, "description": description, "image_url": image_url, "link": link}
-
-    # Добавляем карточку в список карточек
-    news_cards.append(new_card)
-
-    # Сохраняем обновленный список карточек в JSON файл
-    save_news_cards("news_cards.json")
-    
-    # Возвращаем данные о добавленной карточке в формате JSON
-    response.content_type = 'application.json'
-    return json.dumps(new_card)
+        # Сохраняем обновленный список карточек в JSON файл
+        save_news_cards("news_cards.json")
+        
+        # Возвращаем данные о добавленной карточке в формате JSON
+        response.content_type = 'application.json'
+        return json.dumps(new_card)
 
 
 @route('/static/<filename>')#route to static files

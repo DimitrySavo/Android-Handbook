@@ -27,10 +27,11 @@
           <!-- Форма для добавления новостных карточек -->
         <div id="add-news-form" >
             <form id="news-form" action="/submit" method="POST">
-                <input type="text" name="title" placeholder="Заголовок">
-                <input type="text" name="description" placeholder="Описание">
-                <input type="url" name="image_url" placeholder="URL изображения">
-                <input type="url" name="link" placeholder="Ссылка на новость">
+                <input type="text" name="title" placeholder="Заголовок" required maxlength="30">
+                <input type="text" name="description" placeholder="Описание" required maxlength="150">
+                <input type="url" name="image_url" placeholder="URL изображения" required>
+                <input type="url" name="link" placeholder="Ссылка на новость" required>
+                <input type="date" name="date" required="true" max="2024-05-20">
                 <button type="submit">Добавить</button>
             </form>
         </div>
@@ -43,6 +44,7 @@
                 <div class="card-description">
                     <h2>{{ card['title'] }}</h2>
                     <p>{{ card['description'] }}</p>
+                    <p>{{ card['date'] }}</p>
                 </div>
             </div>
             % end
@@ -89,6 +91,7 @@
                             <div class="card-description">
                                 <h2>${data.title}</h2>
                                 <p>${data.description}</p>
+                                <p>${data.date}</p>
                             </div>
                         </div>
                     `;
